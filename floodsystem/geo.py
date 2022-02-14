@@ -54,3 +54,22 @@ def stations_by_river(stations):
             mapping[river].append(station)
         else:
             mapping[river] = [station]
+
+def stations_within_radius(stations, centre, r):
+    """Given a radius r and a geographic coordinate x, this function returns a list of all stations 
+    within radius r of a geographic coordinate x"""
+    within_radius=[]
+    for station in stations:
+        if haversine(stations.coordinate, centre)<r:
+            within_radius.append(station)
+    return within_radius
+
+def rivers_by_station_number(stations, N):
+    """Given a number N, determines the N rivers with the greatest number of monitoring stations"""
+    N_rivers=[]
+    mapping_but_cooler = {}
+    mapping = stations_by_river(stations)
+    for i in mapping:
+        mapping_but_cooler[i] = len(mapping[i])
+
+

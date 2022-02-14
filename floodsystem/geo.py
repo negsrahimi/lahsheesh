@@ -31,3 +31,26 @@ def haversine(c1, c2):
     part2 = cos(long1) * cos(long2) * pow(sin((long2 - long1)/2), 2)
     
     distance = 2 * r * asin(sqrt(part1 + part2))
+
+""" Given a list of station objects, this function returns a list of rivers with a monitoring
+station.
+"""
+def rivers_with_station(stations):
+    rivers = []
+    for station in stations:
+        if station.river not in rivers:
+            rivers.append(river)
+
+    return rivers
+
+""" Given a list of station objects, this function returns a dictionary that maps river names
+to a list of station objects on a given river.
+"""
+def stations_by_river(stations):
+    mapping = {}
+    for station in stations:
+        river = station.river
+        if river in mapping.keys():
+            mapping[river].append(station)
+        else:
+            mapping[river] = [station]

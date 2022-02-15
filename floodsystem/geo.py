@@ -66,10 +66,12 @@ def stations_within_radius(stations, centre, r):
 
 def rivers_by_station_number(stations, N):
     """Given a number N, determines the N rivers with the greatest number of monitoring stations"""
-    N_rivers=[]
-    mapping_but_cooler = {}
-    mapping = stations_by_river(stations)
-    for i in mapping:
-        mapping_but_cooler[i] = len(mapping[i])
+    stations_river = stations_by_river(stations)
+    stations_no = sorted_by_key([(i, len(stations_river[i])) for i in stations_river], 1, reverse=True)
 
-
+    cutoff = stations_no[N-1][1] 
+    stations_no_but_cooler = []
+    for i in stations_no:
+        if i[1] >= cutoff:
+           stations_no_but_cooler.append(i)
+    return stations_no_but_cooler

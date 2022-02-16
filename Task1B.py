@@ -16,12 +16,15 @@ def run():
 
     # Get distances of stations from the given coordinate
     distances = stations_by_distance(stations, p)
+    list_to_print = []
+    for x in distances:
+        list_to_print.append((x[0].name, x[0].town, x[1]))
 
     print("The 10 closest stations to Cambridge city centre are:")
-    print(distances[:10] + "\n")
+    print(str(list_to_print[:10]) + "\n")
 
     print("The 10 stations furthest away from Cambridge city centre are:")
-    print(distances[-10:])
+    print(list_to_print[-10:])
 
 
 if __name__ == "__main__":

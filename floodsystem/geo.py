@@ -42,8 +42,9 @@ def rivers_with_station(stations):
     rivers = []
     for station in stations:
         if station.river not in rivers:
-            rivers.append(river)
+            rivers.append(station.river)
 
+    #print(rivers)
     return rivers
 
 """ Given a list of station objects, this function returns a dictionary that maps river names
@@ -57,13 +58,14 @@ def stations_by_river(stations):
             mapping[river].append(station)
         else:
             mapping[river] = [station]
+    return mapping
 
 def stations_within_radius(stations, centre, r):
     """Given a radius r and a geographic coordinate x, this function returns a list of all stations 
     within radius r of a geographic coordinate x"""
     within_radius=[]
     for station in stations:
-        if haversine(stations.coordinate, centre)<r:
+        if haversine(station.coord, centre)<r:
             within_radius.append(station)
     return within_radius
 

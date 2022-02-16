@@ -11,15 +11,18 @@ def run():
 
     #Build station list and mapping.
     stations = build_station_list()
-    mapping = stations_by_river()
+    mapping = stations_by_river(stations)
 
-    rivers = rivers_with_station(stations).sort()
-    print(len(rivers) + 'rivers.')
-    print('First 10 - ' + rivers[:10])
+    rivers = rivers_with_station(stations)
+    rivers.sort()
+    print(str(len(rivers)) + ' rivers.' + '\n')
+    print('First 10 - ' + str(rivers[:10]) + "\n")
 
     for riv in ['River Aire', 'River Cam', 'River Thames']:
-        sta = mapping[riv].sort()
+        sta = [x.name for x in mapping[riv]]
+        sta.sort()
         print(sta)
+        print()
     
 
 if __name__ == "__main__":

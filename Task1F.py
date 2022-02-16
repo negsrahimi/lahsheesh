@@ -13,7 +13,8 @@ def run():
     #Build station list
     stations = build_station_list()
 
-    inconsistent_stations = inconsistent_typical_range_stations(stations).sort()
+    inconsistent_stations = [x.name for x in inconsistent_typical_range_stations(stations)]
+    inconsistent_stations.sort()
     print(inconsistent_stations)
     
 

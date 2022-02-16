@@ -11,9 +11,10 @@ def run():
     # Build list of stations
     stations = build_station_list()
 
+    # Print list of stations within 10km of the Cambridge city centre in alphabetical order
     centre = (52.2053, 0.1218)
-    print(stations_within_radius(stations, centre, 10))
-    
+    the_list = stations_within_radius(stations, centre, 10)
+    print(sorted([i.name for i in the_list]))
 
 
 if __name__ == "__main__":

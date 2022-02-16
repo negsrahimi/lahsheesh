@@ -3,17 +3,17 @@
 # SPDX-License-Identifier: MIT
 """This module contains a collection of functions related to
 geographical data.
-
 """
 
 from .utils import sorted_by_key  # noqa
 #from math import asin, cos, sin, sqrt, pow
 from haversine import haversine
 
-""" This function takes a list of monitoring stations and a coordinate p, and returns a sorted
-list of (station, distance) tuples where distance is the distance of the station from p.
-"""
+
 def stations_by_distance(stations, p):
+    """ This function takes a list of monitoring stations and a coordinate p, and returns a sorted
+    list of (station, distance) tuples where distance is the distance of the station from p.
+    """
     distances = []
     for station in stations:
         distance = haversine(station.coord, p)
@@ -21,8 +21,8 @@ def stations_by_distance(stations, p):
     distances = sorted_by_key(distances, 1)
     return distances
 
-""" A function to calculate the haversine distance between two coordinates in kilometres.
-"""
+##""" A function to calculate the haversine distance between two coordinates in kilometres.
+##"""
 ##def haversine(c1, c2):
 ##    r = 6371
 ##    lat1, long1 = c1
@@ -35,10 +35,10 @@ def stations_by_distance(stations, p):
 ##    
 ##    distance = 2 * r * asin(sqrt(abs(part1 + part2)))
 
-""" Given a list of station objects, this function returns a list of rivers with a monitoring
-station.
-"""
 def rivers_with_station(stations):
+    """ Given a list of station objects, this function returns a list of rivers with a monitoring
+    station.
+    """
     rivers = []
     for station in stations:
         if station.river not in rivers:
@@ -47,10 +47,10 @@ def rivers_with_station(stations):
     #print(rivers)
     return rivers
 
-""" Given a list of station objects, this function returns a dictionary that maps river names
-to a list of station objects on a given river.
-"""
 def stations_by_river(stations):
+    """ Given a list of station objects, this function returns a dictionary that maps river names
+    to a list of station objects on a given river.
+    """
     mapping = {}
     for station in stations:
         river = station.river

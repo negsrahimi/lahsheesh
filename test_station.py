@@ -35,6 +35,6 @@ def test_inconsistent_stations():
 
     # check that each value is a string
     for station in inconsistent_typical_range_stations(stations):
-        assert type(station) == str
+        assert type(station.name) == str
 
 

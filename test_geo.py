@@ -62,9 +62,9 @@ def test_stations_by_distance():
 def test_rivers_with_station():
 
     # check that the results are River Cam and River Thames as per the test stations provided above
-    assert geo.rivers_with_station(test_stations) == {'River Cam', 'River Thames'}
+    assert geo.rivers_with_station(test_stations) == ['River Cam', 'River Thames']
 
 def test_stations_by_river():
 
     # check that the two stations on the River Cam are TestStation1 and TestStation2
-    assert sorted(geo.stations_by_river(test_stations)['River Cam']) == [TestStation1.name, TestStation2.name]
+    assert sorted([x.name for x in geo.stations_by_river(test_stations)['River Cam']]) == [TestStation1.name, TestStation2.name]

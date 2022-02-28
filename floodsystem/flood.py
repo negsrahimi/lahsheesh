@@ -1,24 +1,28 @@
 # A module with functions related to flooding
 
-from utils import sorted_by_key
+from .utils import sorted_by_key
+from .stationdata import update_water_levels
 
 def stations_in_desc_order(stations):
+    update_water_levels(stations)
     lst = []
     for station in stations:
         level = station.relative_water_level()
         if level != None:
             lst.append((station, level))
     return sorted_by_key(lst, 1, reverse=True)
+    #return lst
 
 def stations_level_over_threshold(stations, tol):
     """This function takes a list of stations and a tolerance value. It returns a list of tuples, where each tuple holds (i) a station (object) at which the latest
        relative water level is over the tolerance and (ii) the relative water level at the station. The returned list is sorted by the relative level in descending order."""
 
     lst = stations_in_desc_order(stations)
+    #print(lst)
     n = len(lst)
     for i in range(n):
-        if lst[n][1] <= tol:
-            return lst[:n]
+        if lst[i][1] <= tol:
+            return lst[:i]
 
 
 def stations_highest_rel_level(stations, N):

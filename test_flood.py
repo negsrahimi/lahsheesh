@@ -9,10 +9,10 @@ update_water_levels(stations)
 
 def test_stations_highest_rel_level():    
     topstations = stations_highest_rel_level(stations, 5)
-    prevval = -10000
-    for i in topstations:
-        assert i[1] > prevval
-        prevval = i[1]
+    prevval = 10000
+    for station in topstations:
+        assert station.relative_water_level() < prevval
+        prevval = station.relative_water_level()
 
 def test_stations_level_over_threshold():
     lst = stations_level_over_threshold(stations,0.8)
